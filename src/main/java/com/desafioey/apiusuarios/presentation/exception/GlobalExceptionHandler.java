@@ -24,6 +24,12 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(UserAlreadyExistsException.class)
+    public ResponseEntity<Map<String, String>> handleEmailAlreadyExists(UserAlreadyExistsException ex) {
+        Map<String, String> response = new HashMap<>();
+        response.put("mensaje", ex.getMessage());
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT); // 409
+    }
 
 
     @ExceptionHandler(Exception.class)

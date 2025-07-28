@@ -18,4 +18,6 @@ public class UserResponseDto {
     private String token;
     private boolean isActive;
 
+    public UserResponseDto(UUID id, String alex, String mail, String token123) {
+    }
 }

@@ -34,4 +34,7 @@ public class UserDto {
     private String password;
     @Valid
     private List<PhoneDto> phones;
+
+    public UserDto(String alex, String mail, String password123) {
+    }
 }

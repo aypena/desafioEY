@@ -9,6 +9,7 @@ import com.desafioey.apiusuarios.domain.usecase.CreateUserUseCase;
 import com.desafioey.apiusuarios.presentation.exception.UserAlreadyExistsException;
 import com.desafioey.apiusuarios.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -16,10 +17,11 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class CreateUserService implements CreateUserUseCase {
+public class CreateUserServiceImpl implements CreateUserUseCase {
 
     private final UserRepository userRepository;
     private final JwtUtil jwtUtil;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public UserResponseDto createUser(UserDto userRequest) {
@@ -29,6 +31,9 @@ public class CreateUserService implements CreateUserUseCase {
 
         // Mapea UserDto a UserEntity con UseMapper
         UserEntity userEntity = UserMapper.toEntity(userRequest);
+        // cifrado de password
+        String encryptedPassword = passwordEncoder.encode(userRequest.getPassword());
+        userEntity.setPassword(encryptedPassword);
 
         // Establece fechas y UUID (puedes confiar en UseMapper o actualizar aquí)
         LocalDateTime now = LocalDateTime.now();
@@ -38,6 +43,7 @@ public class CreateUserService implements CreateUserUseCase {
         userEntity.setModified(now);
         userEntity.setLastlogin(now);
         userEntity.setActive(true);
+
 
         // Genera el token JWT usando el email
         String token = jwtUtil.generateToken(userId,userEntity.getEmail());
