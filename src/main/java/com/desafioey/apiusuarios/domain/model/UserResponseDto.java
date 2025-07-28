@@ -7,16 +7,15 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Getter
-@Setter
-@NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@Builder
 public class UserResponseDto {
     private UUID id;
     private LocalDateTime create;
     private LocalDateTime modified;
     private LocalDateTime lastLogin;
-    private String itokend;
+    private String token;
     private boolean isActive;
 
 }
