@@ -14,6 +14,9 @@ con capas de presentación, dominio y datos, utiliza H2 como base de datos en me
 - Gradle (build tool)
 - JUnit 5 + Mockito para pruebas
 
+## como desacargar el proyecto Proyecto
+
+
 ## Estructura del Proyecto
 src/
 ├── presentation
@@ -34,9 +37,9 @@ src/
 5. Al crear usuario, `TokenGenerator` genera JWT.
 6. La respuesta HTTP regresa con el token JWT generado.
 
-La API correrá en http://localhost:8081/api/v1/users/register
+## La API correrá en http://localhost:8081/api/v1/users/register
 
-Json de prueba entrada
+## Json de prueba entrada
 {
 "name": "Juan Rodriguez",
 "email": "juan@rodriguez.org",
@@ -50,7 +53,7 @@ Json de prueba entrada
 ]
 }
 
-Jsos de respuesta Salida Esperada
+## Jsos de respuesta Salida Esperada
 
 {
     "id": "415482c3-5fb1-4b96-ad6e-44c4a6fb052b",
@@ -61,7 +64,7 @@ Jsos de respuesta Salida Esperada
     "active": true
 }
 
-Json de Salida para errores 
+## Json de Salida para errores 
 {
     "mensaje": "El correo ya registrado"
 }
