@@ -14,7 +14,65 @@ con capas de presentación, dominio y datos, utiliza H2 como base de datos en me
 - Gradle (build tool)
 - JUnit 5 + Mockito para pruebas
 
-## como desacargar el proyecto Proyecto
+## Como desacargar el proyecto Proyecto.
+1. Clonar el repositorio desde GitHub
+Ve a la página del repositorio en GitHub:
+https://github.com/aypena/desafioEY/tree/main
+
+Haz clic en el botón Code y copia la URL (HTTPS o SSH).
+
+Abre tu terminal (Git Bash / Terminal / PowerShell).
+
+Ejecuta el comando:
+
+bash
+Copy
+Edit
+git clone https://github.com/aypena/desafioEY.git
+Esto creará una carpeta llamada desafioEY con todos los archivos del proyecto localmente 
+docs.github.com
+.
+
+2. Abrir el proyecto en IntelliJ IDEA
+Inicia IntelliJ IDEA.
+
+Selecciona File → Open... (o Open Project).
+
+Navega hasta la carpeta desafioEY que acabas de clonar y ábrela.
+
+IntelliJ detectará automáticamente que es un proyecto Gradle. Acepta la sugerencia de importar como proyecto Gradle.
+
+Se descargará el classpath y las dependencias definidas en build.gradle.
+
+3. Ejecutar la aplicación
+Con el IDE configurado:
+
+En IntelliJ, busca la clase con el método main(...) que arranca Spring Boot (normalmente en src/main/java/...).
+
+## Como ejecutar el Postman
+1. Configurar puerto en application.properties (server.port=8081)  esto ya lo tiene predefinido el proyecto.
+2. Iniciar aplicación Postman
+3. En Postman: crear un nuevo proyecto
+   - Método: POST
+   - URL: http://localhost:8081/api/v1/users/register
+   - Headers:
+       Content-Type: application/json
+       Accept: application/json
+   - Body :
+   - {
+"name": "Juan Rodriguez",
+"email": "juan@rodriguez.org",
+"password": "hunter2",
+"phones": [
+{
+"number": "1234567",
+"citycode": "1",
+"contrycode": "57"
+}
+]
+}
+
+4. Enviar y capturar el token JWT de la respuesta
 
 
 ## Estructura del Proyecto
